@@ -1,9 +1,11 @@
 const qrcode = require('qrcode-terminal');
-const { Client, LocalAuth } = require('whatsapp-web.js');
+const { Client } = require('whatsapp-web.js'); //comentar este cuando quieras editar
+//const { Client, LocalAuth } = require('whatsapp-web.js');
+
 const fetch = require('node-fetch');
-const client = new Client({
-    authStrategy: new LocalAuth()
-});
+const client = new Client//({
+   // authStrategy: new LocalAuth()
+//});
 
 let triviaQuestion = null; 
 
