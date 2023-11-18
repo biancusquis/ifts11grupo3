@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -6,25 +6,19 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './qr-code.component.html',
   styleUrls: ['./qr-code.component.css']
 })
-export class QrCodeComponent implements OnInit {
-  qrCodeData: string = '';
+export class QrCodeComponent {
+  qrCodeUrl: string | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  ngOnInit() {
-    this.fetchQrCodeData();
-  }
-
-  fetchQrCodeData() {
-    // Llama a tu API backend para obtener los datos del QR
-    // Asegúrate de ajustar la URL según tu configuración
-    const apiUrl = 'http://localhost:3000/api/generar_qr'; // Cambia la URL según tu backend
-    this.http.get<any>(apiUrl).subscribe(
-      (data) => {
-        this.qrCodeData = data.qrData;
+  iniciarWhatsApp() {
+    this.http.get<{ qrCodeUrl: string }>('http://localhost:3000/iniciar-whatsapp').subscribe(
+      (response) => {
+        console.log(response.qrCodeUrl); // Muestra la URL del código QR por consola
+        this.qrCodeUrl = response.qrCodeUrl; // Asigna la URL para mostrarla en tu interfaz
       },
       (error) => {
-        console.error('Error al obtener datos del QR', error);
+        console.error('Error iniciando WhatsApp:', error);
       }
     );
   }

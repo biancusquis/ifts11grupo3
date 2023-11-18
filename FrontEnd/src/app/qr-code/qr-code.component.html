@@ -1,6 +1,6 @@
-<p>qr-code works!</p>
-<div *ngIf="qrCodeData">
-    <p>Código QR generado desde el backend:</p>
-    <img [src]="qrCodeData" alt="QR Code">
-  </div>
-  
+qr-code.component.html:
+<div *ngIf="qrCodeUrl">
+  <img [src]="qrCodeUrl" alt="WhatsApp QR Code">
+</div>
+
+<button (click)="iniciarWhatsApp()">Iniciar WhatsApp</button>
