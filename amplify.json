@@ -1,0 +1,10 @@
+{
+    "appId": "ifts11grupo3",
+    "appName": "IFTS11Grupo3",
+    "framework": "angular",
+    "backend": {
+      "hosting": {
+        "target": "FrontEnd/src"
+      }
+    }
+  }
